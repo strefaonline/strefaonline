@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Pensjonat Górski – Wypoczynek w Sercu Gór</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Pensjonat w górach – komfortowe pokoje, cisza, natura i widok na góry. Idealne miejsce na wypoczynek przez cały rok." />
+
+    <!-- Tailwind CSS 4 CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Alpine.js -->
+    <script
+      defer
+      src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+    <style>
+      body {
+        font-family: system-ui, sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-slate-50 text-slate-800">
+    <!-- HEADER -->
+    <header class="bg-white shadow sticky top-0 z-50">
+      <div
+        class="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold">🏔️ Pensjonat Górski</h1>
+        <nav class="space-x-6 hidden md:block">
+          <a href="#pokoje" class="hover:text-emerald-600">Pokoje</a>
+          <a href="#galeria" class="hover:text-emerald-600">Galeria</a>
+          <a href="#cennik" class="hover:text-emerald-600">Cennik</a>
+          <a href="#kontakt" class="hover:text-emerald-600">Kontakt</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section
+      class="relative h-[70vh] flex items-center justify-center text-white">
+      <img
+        src="https://images.unsplash.com/photo-1501785888041-af3ef285b470"
+        class="absolute inset-0 w-full h-full object-cover"
+        alt="" />
+      <div class="absolute inset-0 bg-black/50"></div>
+
+      <div class="relative z-10 text-center px-4">
+        <h2 class="text-4xl md:text-6xl font-bold mb-4">
+          Odpocznij w sercu gór
+        </h2>
+        <p class="max-w-xl mx-auto mb-6 text-lg">
+          Komfortowe pokoje, cisza, natura i niezapomniane widoki
+        </p>
+        <a
+          href="#rezerwacja"
+          class="bg-emerald-600 hover:bg-emerald-700 px-8 py-3 rounded-full font-semibold">
+          Zarezerwuj pobyt
+        </a>
+      </div>
+    </section>
+
+    <!-- O NAS -->
+    <section class="max-w-7xl mx-auto px-4 py-16">
+      <div class="grid md:grid-cols-2 gap-10 items-center">
+        <div>
+          <h3 class="text-3xl font-bold mb-4">Rodzinny pensjonat w górach</h3>
+          <p class="mb-4">
+            Nasz pensjonat to idealne miejsce na wypoczynek o każdej porze roku.
+            Bliskość szlaków, cisza i domowa atmosfera.
+          </p>
+          <ul class="space-y-2">
+            <li>✔️ Blisko szlaków turystycznych</li>
+            <li>✔️ Parking i WiFi</li>
+            <li>✔️ Śniadania regionalne</li>
+            <li>✔️ Widok na góry</li>
+          </ul>
+        </div>
+        <img
+          src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb"
+          class="rounded-xl shadow"
+          alt="" />
+      </div>
+    </section>
+
+    <!-- POKOJE -->
+    <section id="pokoje" class="bg-white py-16" x-data="pokoje()">
+      <div class="max-w-7xl mx-auto px-4">
+        <h3 class="text-3xl font-bold mb-10 text-center">Nasze pokoje</h3>
+
+        <div class="grid md:grid-cols-3 gap-8">
+          <template x-for="pokoj in lista" :key="pokoj.nazwa">
+            <div
+              class="border rounded-xl overflow-hidden shadow hover:shadow-lg transition">
+              <img :src="pokoj.img" class="h-48 w-full object-cover" alt="" />
+              <div class="p-5">
+                <h4
+                  class="text-xl font-semibold mb-2"
+                  x-text="pokoj.nazwa"></h4>
+                <p class="text-sm mb-3" x-text="pokoj.opis"></p>
+                <p class="font-bold text-emerald-600" x-text="pokoj.cena"></p>
+              </div>
+            </div>
+          </template>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section id="galeria" class="py-16 bg-slate-100">
+      <div class="max-w-7xl mx-auto px-4">
+        <h3 class="text-3xl font-bold mb-10 text-center">Galeria</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <img
+            class="rounded-lg"
+            src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750" />
+          <img
+            class="rounded-lg"
+            src="https://images.unsplash.com/photo-1505691938895-1758d7feb511" />
+          <img
+            class="rounded-lg"
+            src="https://images.unsplash.com/photo-1540518614846-7eded433c457" />
+          <img
+            class="rounded-lg"
+            src="https://images.unsplash.com/photo-1501183638710-841dd1904471" />
+        </div>
+      </div>
+    </section>
+
+    <!-- CENNIK -->
+    <section id="cennik" class="py-16">
+      <div class="max-w-4xl mx-auto px-4 text-center">
+        <h3 class="text-3xl font-bold mb-6">Cennik</h3>
+        <div class="bg-white shadow rounded-xl p-8 space-y-4">
+          <p>Pokój 2-osobowy: <strong>250 zł / noc</strong></p>
+          <p>Pokój rodzinny: <strong>350 zł / noc</strong></p>
+          <p>Apartament: <strong>450 zł / noc</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- REZERWACJA -->
+    <section id="rezerwacja" class="bg-emerald-600 text-white py-16">
+      <div class="max-w-4xl mx-auto px-4">
+        <h3 class="text-3xl font-bold mb-6 text-center">
+          Zapytanie rezerwacyjne
+        </h3>
+
+        <form class="grid md:grid-cols-2 gap-6">
+          <input
+            type="text"
+            placeholder="Imię i nazwisko"
+            class="p-3 rounded text-black" />
+          <input
+            type="email"
+            placeholder="Email"
+            class="p-3 rounded text-black" />
+          <input type="date" class="p-3 rounded text-black" />
+          <input type="date" class="p-3 rounded text-black" />
+          <textarea
+            placeholder="Wiadomość"
+            class="md:col-span-2 p-3 rounded text-black"></textarea>
+          <button class="md:col-span-2 bg-black py-3 rounded font-bold">
+            Wyślij zapytanie
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer id="kontakt" class="bg-slate-900 text-slate-300 py-10">
+      <div class="max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-6">
+        <div>
+          <h4 class="font-bold mb-2">Pensjonat Górski</h4>
+          <p>Góry, Polska</p>
+        </div>
+        <div>
+          <p>📞 600 000 000</p>
+          <p>📧 kontakt@pensjonat.pl</p>
+        </div>
+        <div class="text-sm">© 2026 Wszystkie prawa zastrzeżone</div>
+      </div>
+    </footer>
+
+    <!-- ALPINE DATA -->
+    <script>
+      function pokoje() {
+        return {
+          lista: [
+            {
+              nazwa: "Pokój 2-osobowy",
+              opis: "Idealny dla par, widok na góry",
+              cena: "250 zł / noc",
+              img: "https://images.unsplash.com/photo-1590490360182-c33d57733427",
+            },
+            {
+              nazwa: "Pokój rodzinny",
+              opis: "Przestronny, dla 4 osób",
+              cena: "350 zł / noc",
+              img: "https://images.unsplash.com/photo-1505693416388-ac5ce068fe85",
+            },
+            {
+              nazwa: "Apartament",
+              opis: "Luksusowy apartament z balkonem",
+              cena: "450 zł / noc",
+              img: "https://images.unsplash.com/photo-1566073771259-6a8506099945",
+            },
+          ],
+        };
+      }
+    </script>
+  </body>
+</html>
